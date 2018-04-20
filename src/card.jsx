@@ -7,26 +7,26 @@ export default function createCard(content) {
       const { src, ...props } = this.props;
 
       return (
-        <Card__block {...props}>
-          <Card__image src={src} />
-          <Card__content>{content}</Card__content>
-        </Card__block>
+        <Block {...props}>
+          <Image src={src} />
+          <Content>{content}</Content>
+        </Block>
       );
     }
   };
 }
 
-const Card__block = styled.div`
+const Block = styled.div`
   align-items: center;
   display: inline-flex;
   background-color: rgb(230, 230, 230);
 `;
 
-const Card__image = styled.img`
+const Image = styled.img`
   max-width: 20rem;
 `;
 
-const Card__content = styled.div`
+const Content = styled.div`
   padding: 1rem;
   max-width: 20rem;
 `;
