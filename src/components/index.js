@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Card from './card.jsx';
+import Card from './card';
 import axios from 'axios';
 
 type Props = {};

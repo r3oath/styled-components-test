@@ -1,6 +1,6 @@
 module.exports = env => {
   return {
-    test: /\.(js|jsx)$/,
+    test: /\.js$/,
     exclude: /node_modules/,
     use: [
       {
