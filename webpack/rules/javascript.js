@@ -8,7 +8,8 @@ module.exports = env => {
         options: {
           presets: [
             ['@babel/preset-env', { modules: false }],
-            'babel-preset-react',
+            '@babel/preset-react',
+            '@babel/preset-flow',
           ],
           plugins: [
             '@babel/plugin-transform-runtime',

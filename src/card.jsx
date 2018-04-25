@@ -1,29 +1,50 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-export default function createCard(content) {
-  return class Card extends React.Component {
-    render() {
-      const { src, ...props } = this.props;
+type Props = {
+  content: {
+    primary: React.Node, 
+    metadata: React.Node
+  },
+  src: string,
+  modifiers: {
+    primary?: boolean,
+  }
+};
 
-      return (
-        <Block {...props}>
-          <Image src={src} />
-          <Content>{content}</Content>
-        </Block>
-      );
-    }
-  };
+export default class Card extends React.Component<Props> {
+  render() {
+    const { src, content, ...props } = this.props;
+
+    return (
+      <Block {...props}>
+        <Image src={src}/>
+        <MetaData>{content.metadata}</MetaData>
+        <Content>{content.primary}</Content>
+      </Block>
+    );
+  }
 }
 
 const Block = styled.div`
   align-items: center;
   display: inline-flex;
   background-color: rgb(230, 230, 230);
+
+  ${props => props.modifiers.primary && css`
+    border: 1px solid red;
+  `}
 `;
 
 const Image = styled.img`
   max-width: 20rem;
+`;
+
+const MetaData = styled.div`
+  font-size: 0.9rem;
+  color: red;
 `;
 
 const Content = styled.div`
