@@ -1,23 +1,23 @@
 // @flow
 
-import * as React from 'react';
-import styled, { css } from 'styled-components';
+import * as React from "react";
+import styled, { css } from "styled-components";
 
 type Props = {
   content: {
-    primary: React.Node, 
+    primary: React.Node,
     metadata: React.Node,
-    imageUrl: string,
+    imageUrl: string
   },
   modifiers: {
-    primary?: boolean,
+    primary?: boolean
   }
 };
 
 export default function Card({ content, ...props }: Props): React.Node {
   return (
     <Block {...props}>
-      <Image src={content.imageUrl}/>
+      <Image src={content.imageUrl} />
       <MetaData>{content.metadata}</MetaData>
       <Content>{content.primary}</Content>
     </Block>
@@ -29,9 +29,11 @@ const Block = styled.div`
   display: inline-flex;
   background-color: rgb(230, 230, 230);
 
-  ${props => props.modifiers.primary && css`
-    border: 1px solid red;
-  `}
+  ${props =>
+    props.modifiers.primary &&
+    css`
+      border: 1px solid red;
+    `};
 `;
 
 const Image = styled.img`
