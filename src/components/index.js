@@ -48,8 +48,8 @@ class App extends React.Component<Props, State> {
               <small>{post.id}</small>
             </React.Fragment>
           ),
+          imageUrl: this.thumbnail(post.thumbnail),
         },
-        src: this.thumbnail(post.thumbnail),
         modifiers: { primary: true },
       };
 

@@ -6,26 +6,22 @@ import styled, { css } from 'styled-components';
 type Props = {
   content: {
     primary: React.Node, 
-    metadata: React.Node
+    metadata: React.Node,
+    imageUrl: string,
   },
-  src: string,
   modifiers: {
     primary?: boolean,
   }
 };
 
-export default class Card extends React.Component<Props> {
-  render() {
-    const { src, content, ...props } = this.props;
-
-    return (
-      <Block {...props}>
-        <Image src={src}/>
-        <MetaData>{content.metadata}</MetaData>
-        <Content>{content.primary}</Content>
-      </Block>
-    );
-  }
+export default function Card({ content, ...props }: Props): React.Node {
+  return (
+    <Block {...props}>
+      <Image src={content.imageUrl}/>
+      <MetaData>{content.metadata}</MetaData>
+      <Content>{content.primary}</Content>
+    </Block>
+  );
 }
 
 const Block = styled.div`
