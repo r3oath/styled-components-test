@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Card from './card';
 import axios from 'axios';
 
@@ -53,10 +54,25 @@ class App extends React.Component<Props, State> {
         modifiers: { primary: true },
       };
 
-      return <Card key={post.id} {...props} />; 
+      return (
+        <Link key={post.id} to={`/r/${post.id}`}>
+          <Card {...props} />
+        </Link>
+      ); 
     });
 
-    return <React.Fragment>{cards}</React.Fragment>;
+    return (
+      <Router>
+        <React.Fragment>
+          <Route exact={true} path="/" render={() => (
+            <React.Fragment>{cards}</React.Fragment>
+          )} />
+          <Route path="/r/:postId" render={() => (
+            <h1>Viewing post</h1>
+          )} />
+        </React.Fragment>
+      </Router>
+    );
   }
 }
 
